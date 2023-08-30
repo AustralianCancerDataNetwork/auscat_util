@@ -42,18 +42,18 @@ jobs:
       id: meta
       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
       with:
-        images: auscat/pentaho-remove-conns
+        images: auscat/pentaho-remove-conn
 
     - name: Build and push Docker Image to Dockerhub 
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
         context: ./
         push: true
-        tags: auscat/pentaho-remove-conns
+        tags: auscat/pentaho-remove-conn:latest
 
     - name: Build and Push Docker Image to GHCR
       uses: docker/build-push-action@v3
       with:
         context: ./
         push: true
-        tags: ghcr.io/australiancancerdatanetwork/auscat/pentaho-remove-conns
+        tags: ghcr.io/australiancancerdatanetwork/auscat/pentaho-remove-conn
