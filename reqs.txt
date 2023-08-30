@@ -1,0 +1,7 @@
+lxml
+numpy
+pandas
+psycopg2-binary
+pyyaml
+SPARQLWrapper
+sqlalchemy

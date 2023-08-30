@@ -494,9 +494,10 @@ class PentahoConnection:
         and the contents that are within then resave the file in the same location.
         """
         for path in self.pathlist:
-            for filename in os.listdir(path):
-                if filename.endswith(".ktr") or filename.endswith(".kjb"):
-                    tree = etree.parse(os.path.join(path, filename))
-                    etree.strip_elements(tree, "{*}connection", with_tail=True)
-                    save = os.path.join(path, filename)
-                    tree.write(save)
+            for root, dirs, files in os.walk(path):
+                for filename in files:
+                    if filename.endswith(".ktr") or filename.endswith(".kjb"):
+                        tree = etree.parse(os.path.join(root, filename))
+                        etree.strip_elements(tree, "{*}connection", with_tail=True)
+                        save = os.path.join(root, filename)
+                        tree.write(save)
